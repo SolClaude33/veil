@@ -49,6 +49,7 @@
 .workspace-main { min-width: 0; height: 100dvh; display: grid; grid-template-rows: 72px minmax(0, 1fr) auto; position: relative; background: linear-gradient(rgba(40, 63, 131, 0.026) 1px, transparent 1px) 0 72px / 100% 36px, var(--terminal-bg); }
 .workspace-topbar { position: relative; padding: 0 30px; border-bottom: 1px solid var(--terminal-line); background: rgba(245, 243, 237, 0.88); backdrop-filter: blur(12px); }
 .workspace-topbar-start { min-width: 120px; display: flex; align-items: center; gap: 8px; }
+.workspace-topbar-actions { display: flex; align-items: center; gap: 7px; }
 .workspace-icon-button, .workspace-home-button, .terminal-sidebar-close, .workspace-settings-heading button { border: 0; background: transparent; cursor: pointer; }
 .workspace-icon-button, .terminal-sidebar-close, .workspace-settings-heading button { width: 39px; height: 39px; display: grid; place-items: center; border-radius: 50%; color: var(--terminal-muted); }
 .workspace-icon-button:hover, .workspace-settings-heading button:hover { color: var(--terminal-ink); background: rgba(40, 63, 131, 0.07); }
@@ -137,6 +138,12 @@
   .workspace-topbar-start { min-width: 0; }
   .workspace-home-button span { display: none; }
   .workspace-content { padding-top: 6vh; }
+}
+
+@media (max-width: 560px) {
+  .workspace-topbar .wallet-button.is-compact { width: 36px; padding: 0; }
+  .workspace-topbar .wallet-button.is-compact .wallet-button-text,
+  .workspace-topbar .wallet-button.is-compact .wallet-button-chevron { display: none; }
 }
 
 @media (max-width: 680px) {

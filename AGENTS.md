@@ -4,7 +4,7 @@ VEIL is a local frontend for a private AI studio. Its independent visual concept
 
 ## Structure
 
-The application uses React, TypeScript, and Vite. `src/main.tsx` mounts the application; `src/App.tsx` owns navigation and the landing page. `src/components/Terminal.tsx` and its companion stylesheet own the conversation workspace. Shared design tokens and landing layouts are in `src/styles.css`. Production vector assets are served from `public/assets/` at `/assets/…`. Keep design references in `references/` and real browser captures in `validation/`, outside served assets. Preserve the existing parent workspace and unrelated projects.
+The application uses React, TypeScript, and Vite. `src/main.tsx` mounts the application; `src/App.tsx` owns hash navigation and the landing page. `src/components/Terminal.tsx` owns the workspace, `Docs.tsx` owns documentation and pricing, and `Wallet.tsx` owns the visual wallet selector. Rates live in `src/content/pricing.ts`; page motion lives in `src/hooks/`. Shared tokens are in `src/styles.css`. Serve production SVG/WebP media from `public/assets/` at `/assets/…`; keep original generations and metadata in `assets-src/`, references in `references/`, and real captures in `validation/`. Preserve unrelated projects.
 
 ## Commands
 
@@ -12,8 +12,8 @@ Run commands from this project root. `npm install` installs the lockfile depende
 
 ## Conventions and Validation
 
-All user-facing interface copy, metadata, validation, and accessibility labels must be English. Use semantic landmarks, accessible button names, visible keyboard focus, readable contrast, responsive layouts, and reduced-motion support. Follow warm paper `#f5f3ed`, blue ink `#283f83`, Instrument Serif display type, and Inter body text. Use folded-letter and notebook illustrations in CSS/SVG; preserve functional text as markup. Do not introduce arbitrary stock imagery. Inspect desktop, mobile, and relevant intermediate widths and exercise navigation, starting-point cards, studio controls, and keyboard behavior.
+All interface copy, metadata, errors, and accessibility labels must be English. Preserve warm paper `#f5f3ed`, blue ink `#283f83`, Instrument Serif display type, and Inter body text. Keep functional copy as markup; use purpose-made correspondence imagery and CSS/SVG details. Images require a verified estimate of at most 3 credits each before generation. Inspect desktop/mobile captures and relevant breakpoints. Exercise routes, docs search, pricing input validation, wallet selection, studio controls, keyboard focus, and modal cleanup. Support reduced motion. Latens pricing is a dated reference, not a live integration; verify its source before changing rates.
 
 ## Boundaries
 
-This scope is frontend design only: no inference API, authentication, payments, wallet integration, remote database, or fabricated assistant responses. Interface interactions may change local UI state. Do not show demo banners or implementation disclaimers in the product. No secrets or private customer data belong in source, assets, notes, or captures. Keep development, builds, and previews local. Do not publish, push, create a remote repository, or deploy without Nicol's subsequent destination and authorization.
+This scope is frontend design only. Wallet selection is explicitly a visual, in-memory preference flow: no provider calls, RPC, signatures, addresses, login, or transactions. No inference API, payments, remote database, or fabricated assistant responses. Pricing estimates are local arithmetic. Do not show demo banners or implementation disclaimers in the product. No secrets or private customer data belong in source, assets, notes, or captures. Keep development and previews local. Do not publish, push, create a remote repository, or deploy without Nicol's subsequent destination and authorization.

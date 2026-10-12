@@ -1,0 +1,69 @@
+{
+  "updated": "2026-10-12",
+  "assets": [
+    {
+      "name": "hero-correspondence-v01",
+      "purpose": "Landing hero: tactile private correspondence",
+      "provider": "Higgsfield",
+      "model": "gpt_image_2_5",
+      "variant": "flare",
+      "quality": "high",
+      "resolution": "2k",
+      "aspect_ratio": "3:2",
+      "count": 1,
+      "background": "opaque",
+      "references": [],
+      "estimated_credits_exact": 2.75,
+      "job_id": "e2dd34de-c113-4134-b5e5-7365daca2589",
+      "prompt": "Use case: product-mockup / premium editorial still-life. Create one production hero photograph for an intimate private AI studio with a personal-correspondence identity. A beautifully crafted warm ivory cotton-paper envelope, opened just enough to reveal a single blank pale periwinkle-blue note card. A small circular deep ink-blue wax seal lies on the envelope front; seal has an elegant unlettered embossed fold motif, no letters. Envelope centered horizontally, slightly diagonal on a seamless warm matte paper backdrop precisely close to #f5f3ed. View at a refined three-quarter overhead angle, gentle window light from upper left, tactile paper fibres, natural creases, subtle irregular wax, soft realistic contact shadows. Envelope should occupy approximately 70 percent of width and 62 percent of height, with generous clear margins all sides. Quiet, personal, high-end stationery photography, authentic materials, restrained palette warm ivory #f5f3ed and blue #283f83, soft blue note #d5dce9. The image is a standalone object photograph, not a website or UI mockup. No text, no handwriting, no typography, no watermark, no logos, no human hands, no laptop, no coins, no stock branding, no black background, no neon, no busy props. Keep the envelope and note's silhouette clear at mobile size.",
+      "source": "assets-src/hero-correspondence-v01.png",
+      "final": "public/assets/hero-correspondence-v01.webp",
+      "status": "integrated; inspected in desktop and mobile layouts",
+      "actual_charged_credits": null
+    },
+    {
+      "name": "studio-still-life-v01",
+      "purpose": "Docs overview: a quiet notebook and pen",
+      "provider": "Higgsfield",
+      "model": "gpt_image_2_5",
+      "variant": "flare",
+      "quality": "high",
+      "resolution": "2k",
+      "aspect_ratio": "3:2",
+      "count": 1,
+      "background": "opaque",
+      "references": [
+        "e2dd34de-c113-4134-b5e5-7365daca2589"
+      ],
+      "estimated_credits_exact": 2.75,
+      "job_id": "c608a7d7-e2f1-4693-b4d0-30f8d3ba61ce",
+      "prompt": "Create a premium editorial still-life photograph for the documentation page of VEIL, a private thinking studio. Use the provided reference only for visual continuity: warm ivory cotton paper, muted periwinkle and deep ink blue #283f83, soft window light, tactile grain, restrained personal correspondence. New composition, not another envelope: an open blank ivory notebook with a slender deep blue fountain pen laid diagonally across its gutter, one small periwinkle loose sheet tucked beneath the right page, an unlettered blue wax seal resting nearby. View from a gentle overhead angle on a quiet warm limestone desk matching #f5f3ed. Objects occupy central 75% of frame; spacious margins, natural soft shadows. Horizontal 3:2 composition suitable for a full-width 700px documentation illustration, primary objects fully visible on phone crops. Crisp authentic paper fibers, subtle pen reflections, simple elegant art direction. No readable writing, text, logos, symbols, UI, people, hands, screens, coins, clocks, or branded products. Do not depict buttons or any functional text.",
+      "source": "assets-src/studio-still-life-v01.png",
+      "final": "public/assets/studio-still-life-v01.webp",
+      "status": "integrated; inspected in desktop and mobile layouts",
+      "actual_charged_credits": null
+    },
+    {
+      "name": "credits-still-life-v01",
+      "purpose": "Pricing lead: considered stationery arrangement",
+      "provider": "Higgsfield",
+      "model": "gpt_image_2_5",
+      "variant": "flare",
+      "quality": "high",
+      "resolution": "2k",
+      "aspect_ratio": "3:2",
+      "count": 1,
+      "background": "opaque",
+      "references": [
+        "e2dd34de-c113-4134-b5e5-7365daca2589"
+      ],
+      "estimated_credits_exact": 2.75,
+      "job_id": "c670b1c4-a9dc-4b3b-a7ed-5060ec13f46e",
+      "prompt": "Create a premium editorial still-life photograph for the pricing page of VEIL, a private thinking studio. Use the provided reference as a material and lighting guide: warm ivory cotton paper, muted periwinkle, deep blue ink #283f83, tactile fibers, softly directional window light, private correspondence. Make a new flat-lay composition: three small blank folded note cards in ivory and periwinkle, neatly arranged with measured spacing like a considered ledger, and one simple deep blue ceramic paperweight on the lower-right card. A delicate short ribbon of blue cotton rests at the left. Set everything on warm matte stone matching #f5f3ed. Objects cluster in center-right of the horizontal 3:2 image with clean spacious margins; no object cut off. Subtle real shadows, refined quiet geometry, a feeling of transparency and considered value through materials, never financial iconography. No text, numbers, printed lines, letters, logos, labels, UI, people, hands, devices, money, coins, cryptocurrency marks, or envelopes. All functional copy will be in code.",
+      "source": "assets-src/credits-still-life-v01.png",
+      "final": "public/assets/credits-still-life-v01.webp",
+      "status": "integrated; inspected in desktop and mobile layouts",
+      "actual_charged_credits": null
+    }
+  ]
+}

@@ -15,6 +15,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
+import { WalletButton } from "./Wallet";
 import "./terminal.css";
 
 type TerminalProps = {
@@ -380,17 +381,20 @@ export default function Terminal({
             <ChevronDown size={14} aria-hidden="true" />
           </label>
 
-          <button
-            ref={settingsButtonRef}
-            className="workspace-icon-button"
-            type="button"
-            aria-label="Open studio settings"
-            aria-haspopup="dialog"
-            aria-expanded={settingsOpen}
-            onClick={() => setSettingsOpen(true)}
-          >
-            <Settings2 size={18} aria-hidden="true" />
-          </button>
+          <div className="workspace-topbar-actions">
+            <WalletButton compact />
+            <button
+              ref={settingsButtonRef}
+              className="workspace-icon-button"
+              type="button"
+              aria-label="Open studio settings"
+              aria-haspopup="dialog"
+              aria-expanded={settingsOpen}
+              onClick={() => setSettingsOpen(true)}
+            >
+              <Settings2 size={18} aria-hidden="true" />
+            </button>
+          </div>
         </header>
 
         <section className={`workspace-content ${activeConversation ? "has-messages" : ""}`} aria-live="polite">
