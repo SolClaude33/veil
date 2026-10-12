@@ -3,9 +3,9 @@ import type { FormEvent } from "react";
 import {
   ArrowLeft,
   ArrowUp,
-  Braces,
+  ChartNoAxesColumn,
   ChevronDown,
-  Code2,
+  Feather,
   Menu,
   MessageSquareText,
   Plus,
@@ -42,13 +42,13 @@ const suggestions = [
     prompt: "Build a clear research plan for a topic I am exploring.",
   },
   {
-    icon: Code2,
+    icon: Feather,
     eyebrow: "Coding",
     title: "Untangle a hard problem",
     prompt: "Help me reason through a difficult software problem step by step.",
   },
   {
-    icon: Braces,
+    icon: ChartNoAxesColumn,
     eyebrow: "Analysis",
     title: "Find the signal in the noise",
     prompt: "Create a rigorous framework for analyzing a complex decision.",
@@ -283,8 +283,17 @@ export default function Terminal({
       >
         <div className="terminal-sidebar-header">
           <button className="terminal-brand" type="button" onClick={onExit} aria-label="Return to VEIL home">
-            <span className="terminal-brand-mark" aria-hidden="true">[v_]</span>
-            <span>veil.</span>
+            <svg
+              className="terminal-brand-mark"
+              viewBox="0 0 32 34"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 4h24v25H4V4Z" fill="none" stroke="currentColor" strokeWidth="1.4" />
+              <path d="m4 4 12 16L28 4M4 29l12-9 12 9" fill="none" stroke="currentColor" strokeWidth="1.4" />
+              <path d="m16 20 12-16v25L16 20Z" fill="currentColor" opacity=".12" />
+            </svg>
+            <span>veil</span>
           </button>
           <button
             ref={sidebarCloseRef}
@@ -332,7 +341,7 @@ export default function Terminal({
 
         <div className="terminal-sidebar-footer">
           <span className="terminal-status-dot" aria-hidden="true" />
-          Private workspace
+          Your studio
         </div>
       </aside>
 
@@ -375,7 +384,7 @@ export default function Terminal({
             ref={settingsButtonRef}
             className="workspace-icon-button"
             type="button"
-            aria-label="Open workspace settings"
+            aria-label="Open studio settings"
             aria-haspopup="dialog"
             aria-expanded={settingsOpen}
             onClick={() => setSettingsOpen(true)}
@@ -388,7 +397,7 @@ export default function Terminal({
           {activeConversation ? (
             <div className="workspace-thread">
               <div className="workspace-thread-heading">
-                <span>Current thread</span>
+                <span>Studio note</span>
                 <h1>{activeConversation.title}</h1>
               </div>
               <ol className="workspace-message-list">
@@ -402,9 +411,9 @@ export default function Terminal({
             </div>
           ) : (
             <div className="workspace-empty-state">
-              <div className="workspace-kicker"><span aria-hidden="true" /> Private thinking space</div>
-              <h1>A space for<br />your thoughts.</h1>
-              <p>Begin with a question, a fragment, or something you want to understand.</p>
+              <div className="workspace-kicker"><span aria-hidden="true" /> Your private studio</div>
+              <h1>Every idea<br /><em>starts somewhere.</em></h1>
+              <p>Begin with a question, a fragment, or a thought worth following.</p>
               <div className="workspace-suggestions" aria-label="Suggested prompts">
                 {suggestions.map(({ icon: Icon, eyebrow, title, prompt }) => (
                   <button key={eyebrow} type="button" onClick={() => selectSuggestion(prompt)}>
@@ -429,7 +438,7 @@ export default function Terminal({
               id="terminal-composer"
               rows={1}
               value={draft}
-              placeholder="Ask anything. Think freely."
+              placeholder="Write what is on your mind…"
               onChange={(event) => setDraft(event.target.value)}
               onKeyDown={(event) => {
                 if (event.key === "Enter" && !event.shiftKey) {
@@ -462,7 +471,7 @@ export default function Terminal({
           >
             <div className="workspace-settings-heading">
               <div>
-                <span>Workspace</span>
+                <span>Studio</span>
                 <h2 id={settingsTitleId}>Settings</h2>
               </div>
               <button type="button" aria-label="Close settings" onClick={() => setSettingsOpen(false)}>
@@ -485,7 +494,7 @@ export default function Terminal({
                 value={temperature}
                 onChange={(event) => setTemperature(Number(event.target.value))}
                 style={{
-                  background: `linear-gradient(to right, var(--terminal-lime) 0 ${temperature * 100}%, #343c30 ${temperature * 100}% 100%)`,
+                  background: `linear-gradient(to right, var(--terminal-ink) 0 ${temperature * 100}%, var(--terminal-line) ${temperature * 100}% 100%)`,
                 }}
               />
               <div className="workspace-range-labels"><span>Precise</span><span>Expansive</span></div>
@@ -510,7 +519,7 @@ export default function Terminal({
 
             <div className="workspace-settings-note">
               <SlidersHorizontal size={16} aria-hidden="true" />
-              Preferences apply to this workspace session.
+              Preferences apply to this studio session.
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 # Repository Guidelines
 
-VEIL is a local frontend project inspired by the visual language and private AI product category of Latens. The project context lives in the personal project note identified as `Projects/veil`; resolve its vault location through Nicol's personal workflow. Keep plans, decisions, and validation summaries in that note.
+VEIL is a local frontend for a private AI studio. Its independent visual concept is personal correspondence: paper, folded notes, and blue ink. Latens supplied the original product category; its visual system is not the design reference for the current direction. The project context lives in the personal project note identified as `Projects/veil`; resolve its vault location through Nicol's personal workflow. Keep plans, decisions, and validation summaries in that note.
 
 ## Structure
 
@@ -12,7 +12,7 @@ Run commands from this project root. `npm install` installs the lockfile depende
 
 ## Conventions and Validation
 
-All user-facing interface copy, metadata, validation, and accessibility labels must be English. Use semantic landmarks, accessible button names, visible keyboard focus, readable contrast, responsive layouts, and reduced-motion support. Follow the graphite, pale-lime, and warm-white visual system. Keep icons and simple technical illustrations in code or SVG; do not introduce arbitrary stock imagery. Inspect desktop, mobile, and relevant intermediate widths and exercise navigation, tabs, workspace controls, and keyboard behavior.
+All user-facing interface copy, metadata, validation, and accessibility labels must be English. Use semantic landmarks, accessible button names, visible keyboard focus, readable contrast, responsive layouts, and reduced-motion support. Follow warm paper `#f5f3ed`, blue ink `#283f83`, Instrument Serif display type, and Inter body text. Use folded-letter and notebook illustrations in CSS/SVG; preserve functional text as markup. Do not introduce arbitrary stock imagery. Inspect desktop, mobile, and relevant intermediate widths and exercise navigation, starting-point cards, studio controls, and keyboard behavior.
 
 ## Boundaries
 

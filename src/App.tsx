@@ -1,160 +1,76 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, ArrowDown, LockKeyhole, Layers3, Braces, ScanLine, Check, Menu, X, Plus, Minus, Terminal as TerminalIcon, Fingerprint, ShieldCheck } from 'lucide-react';
-import type { KeyboardEvent } from 'react';
+import { ArrowUpRight, ArrowDown, ArrowRight, Menu, X, Plus, Minus, Feather, Search, Compass } from 'lucide-react';
 import Terminal from './components/Terminal';
 
-const workflows = [
-  { id: 'build', name: 'Build', icon: Braces, label: 'ENGINEERING', prompt: 'Review this architecture. Challenge the assumptions, trace the dependencies, and find a simpler way forward.', context: 'Architecture & systems', direction: 'Question the implementation', deliverable: 'A clearer path to build', code: ['map_dependencies(system)', 'challenge(assumptions)', 'simplify(complexity)'], },
-  { id: 'research', name: 'Research', icon: ScanLine, label: 'EXPLORATION', prompt: 'Explore this idea from first principles. Connect the perspectives, identify what is missing, and help me ask better questions.', context: 'Ideas & investigation', direction: 'Look beyond the obvious', deliverable: 'A new perspective', code: ['explore(first_principles)', 'connect(perspectives)', 'surface(unknowns)'], },
-  { id: 'analyze', name: 'Analyze', icon: Layers3, label: 'REASONING', prompt: 'Break this problem into its essential parts. Separate the evidence from the assumptions and weigh the possible approaches.', context: 'Decisions & complexity', direction: 'Follow the evidence', deliverable: 'Reasoned possibilities', code: ['separate(evidence, assumptions)', 'evaluate(possibilities)', 'trace(reasoning)'], },
+const startingPoints = [
+  { id: 'make', category: 'For the makers', title: 'Make something.', emphasis: 'Make it yours.', description: 'An unexpected idea. A first sentence. Something that doesn’t exist yet.', prompt: 'Help me explore an idea I want to bring to life. Ask thoughtful questions and help me find an original starting point.', icon: Feather, label: 'Start a creative thought', note: 'A possibility, not a prescription.' },
+  { id: 'explore', category: 'For the curious', title: 'Follow a thread.', emphasis: 'See where it goes.', description: 'A question that opens another. A connection you hadn’t considered.', prompt: 'I want to understand a new topic from the ground up. Help me follow the interesting questions and connect the different perspectives.', icon: Search, label: 'Start a research thought', note: 'Leave a little room for surprise.' },
+  { id: 'consider', category: 'For the thoughtful', title: 'Think it through.', emphasis: 'From another angle.', description: 'A complicated decision. A different perspective. A clearer next step.', prompt: 'Help me think through a complex decision. Separate what I know from what I am assuming and explore the possible approaches.', icon: Compass, label: 'Start an analytical thought', note: 'Sometimes a second look is everything.' },
+];
+const questions = [
+  { question: 'What kind of space is VEIL?', answer: 'A personal studio for open intelligence. Bring a question, work through an idea, or simply follow your curiosity. The conversation begins with you.' },
+  { question: 'Which model should I start with?', answer: 'Core is your everyday companion for writing, making, and exploring. Reason is the considered choice for questions with more layers. You can change your model in the studio.' },
+  { question: 'Can I make the studio my own?', answer: 'Choose your model, adjust the conversation preferences, and decide whether to keep new conversations in your current session. Start with a suggestion or begin on a blank page.' },
+  { question: 'Do I need a fully formed question?', answer: 'An unfinished sentence is enough. Start with what is on your mind and give yourself room to see where it leads.' },
 ];
 
-function Brand({ onClick }: { onClick?: () => void }) {
-  return <a className="brand" href="#/" aria-label="VEIL home" onClick={() => { window.scrollTo({ top: 0, behavior: 'instant' }); onClick?.(); }}><span className="brand-mark" aria-hidden="true">[v<span>_</span>]</span><span>veil<span className="brand-period">.</span></span></a>;
+function FoldMark({ className = '' }: { className?: string }) {
+  return <svg className={className} viewBox="0 0 32 34" fill="none" aria-hidden="true"><path d="M4 4h24v25H4V4Z" stroke="currentColor" strokeWidth="1.4"/><path d="m4 4 12 16L28 4M4 29l12-9 12 9" stroke="currentColor" strokeWidth="1.4"/><path d="m16 20 12-16v25L16 20Z" fill="currentColor" fillOpacity=".12"/></svg>;
 }
-
-function IdentityGlyph({ compact = false }: { compact?: boolean }) {
-  return <svg className={`identity-glyph ${compact ? 'identity-glyph--compact' : ''}`} viewBox="0 0 440 450" fill="none" aria-hidden="true">
-    <defs>
-      <linearGradient id={compact ? 'line-small' : 'line-hero'} x1="75" y1="40" x2="360" y2="400" gradientUnits="userSpaceOnUse"><stop stopColor="#bbef75" stopOpacity=".9"/><stop offset=".45" stopColor="#658049" stopOpacity=".55"/><stop offset="1" stopColor="#2a3424" stopOpacity=".12"/></linearGradient>
-      <radialGradient id={compact ? 'glow-small' : 'glow-hero'}><stop stopColor="#aadd62" stopOpacity=".08"/><stop offset="1" stopColor="#aadd62" stopOpacity="0"/></radialGradient>
-    </defs>
-    <circle cx="220" cy="225" r="208" fill={`url(#${compact ? 'glow-small' : 'glow-hero'})`}/>
-    <g stroke={`url(#${compact ? 'line-small' : 'line-hero'})`} strokeWidth="1.25" strokeLinecap="round">
-      {Array.from({ length: 16 }, (_, i) => {
-        const r = 166 - i * 9;
-        const l = 220 - r;
-        const right = 220 + r;
-        const startY = 225 + (i % 3) * 12;
-        return <path key={i} d={`M ${l} ${365 - i * 3} V ${startY} C ${l} ${startY-r*1.4} ${right} ${startY-r*1.4} ${right} ${startY} V ${270 + i * 4} C ${right} ${310+i*5} ${right+16} ${340+i*4} ${right+36} ${365+i*3}`} />;
-      })}
-      {Array.from({ length: 9 }, (_, i) => <path key={`tail-${i}`} d={`M ${158+i*8} ${268+i*4} C ${155+i*8} ${330+i*4} ${170+i*10} 385 ${200+i*11} 414`} />)}
-    </g>
-    <circle cx="220" cy="225" r="200" stroke="#3e4a34" strokeOpacity=".35" strokeDasharray="2 7"/>
-    <path d="M40 65V40h25M375 40h25v25M400 385v25h-25M65 410H40v-25" stroke="#536344" strokeWidth="1.5"/>
-    <path d="M220 20v15M220 415v15M15 225h15M410 225h15" stroke="#536344"/>
-    <path className="glyph-scan" d="M42 223h356" stroke="#bbef75" strokeOpacity=".27"/>
-    <rect x="168" y="213" width="104" height="25" fill="#0b0e0b"/>
-    <text x="220" y="229" textAnchor="middle" fill="#bbef75" fontSize="8" fontFamily="IBM Plex Mono, monospace" letterSpacing="2">IDENTITY WITHHELD</text>
-    <circle cx="54" cy="95" r="3" fill="#bbef75"/><circle cx="380" cy="315" r="2" fill="#bbef75" fillOpacity=".5"/>
-  </svg>;
+function Brand() {
+  return <a className="brand" href="#/" aria-label="VEIL home" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}><FoldMark/><span>veil</span></a>;
+}
+function LetterScene() {
+  return <figure className="letter-scene" aria-label="A folded paper envelope with a personal note, sealed with the VEIL mark">
+    <div className="letter-annotation letter-annotation--left" aria-hidden="true"><span>An idea,<br/>still unfolding.</span><svg viewBox="0 0 110 60" fill="none"><path d="M5 4c-9 29 16 53 84 43m-10-8 15 8-11 8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg></div>
+    <div className="letter-object" aria-hidden="true"><div className="envelope-back"/><div className="thought-paper"><span className="paper-heading">A NOTE TO YOURSELF</span><span className="paper-thought">What if…</span><div className="paper-lines"><i/><i/><i/></div><span className="paper-corner">v.</span></div><div className="envelope-left"/><div className="envelope-right"/><div className="envelope-bottom"/><div className="envelope-seal"><span>v</span><svg viewBox="0 0 82 82"><defs><path id="seal-text-path" d="M41 11a30 30 0 1 1-.1 0"/></defs><text><textPath href="#seal-text-path" startOffset="0">PERSONALLY YOURS · VEIL · </textPath></text></svg></div><span className="envelope-address">PERSONAL CORRESPONDENCE</span></div>
+    <figcaption className="letter-annotation letter-annotation--right"><span>Some things<br/>belong to you.</span><span className="letter-small">AND YOU ALONE.</span></figcaption>
+  </figure>;
 }
 
 function App() {
-  const [route, setRoute] = useState(() => location.hash === '#/terminal' ? 'terminal' : 'home');
+  const [route, setRoute] = useState(() => ['#/terminal', '#/studio'].includes(location.hash) ? 'studio' : 'home');
   const [initialPrompt, setInitialPrompt] = useState('');
   const [initialModel, setInitialModel] = useState<'core' | 'reason'>('core');
   const [mobileMenu, setMobileMenu] = useState(false);
-  const [activeWorkflow, setActiveWorkflow] = useState(0);
   const [openQuestion, setOpenQuestion] = useState<number | null>(null);
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const menuRef = useRef<HTMLButtonElement>(null);
-  const workflow = workflows[activeWorkflow];
-
   useEffect(() => {
-    const onHash = () => { setRoute(location.hash === '#/terminal' ? 'terminal' : 'home'); setMobileMenu(false); };
+    const onHash = () => { setRoute(['#/terminal', '#/studio'].includes(location.hash) ? 'studio' : 'home'); setMobileMenu(false); };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
   useEffect(() => {
-    document.title = route === 'terminal' ? 'Terminal — VEIL' : 'VEIL — Intelligence, off the record.';
+    document.title = route === 'studio' ? 'Your studio — VEIL' : 'VEIL — A little space for yourself.';
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [route]);
   useEffect(() => {
     if (!mobileMenu) return;
-    const close = (e: globalThis.KeyboardEvent) => { if (e.key === 'Escape') { setMobileMenu(false); menuRef.current?.focus(); } };
+    const close = (e: KeyboardEvent) => { if (e.key === 'Escape') { setMobileMenu(false); menuRef.current?.focus(); } };
     window.addEventListener('keydown', close);
     return () => window.removeEventListener('keydown', close);
   }, [mobileMenu]);
-
-  function launch(prompt = '', model: 'core' | 'reason' = 'core') { setInitialPrompt(prompt); setInitialModel(model); location.hash = '/terminal'; }
-  function selectTab(e: KeyboardEvent<HTMLButtonElement>, index: number) {
-    let next = index;
-    if (e.key === 'ArrowRight') next = (index + 1) % workflows.length;
-    else if (e.key === 'ArrowLeft') next = (index - 1 + workflows.length) % workflows.length;
-    else if (e.key === 'Home') next = 0;
-    else if (e.key === 'End') next = workflows.length - 1;
-    else return;
-    e.preventDefault(); setActiveWorkflow(next); tabRefs.current[next]?.focus();
+  function launch(prompt = '', model: 'core' | 'reason' = 'core') {
+    setInitialPrompt(prompt); setInitialModel(model); location.hash = '/studio';
   }
-
-  if (route === 'terminal') return <Terminal onExit={() => { location.hash = '/'; }} initialPrompt={initialPrompt} initialModel={initialModel} />;
+  if (route === 'studio') return <Terminal onExit={() => { location.hash = '/'; }} initialPrompt={initialPrompt} initialModel={initialModel} />;
 
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
-    <header className="site-header">
-      <div className="header-inner">
-        <Brand />
-        <nav className={`main-nav ${mobileMenu ? 'main-nav--open' : ''}`} aria-label="Main navigation" id="main-navigation">
-          <a href="#models" onClick={() => setMobileMenu(false)}>Models</a>
-          <a href="#protocol" onClick={() => setMobileMenu(false)}>The protocol</a>
-          <a href="#privacy" onClick={() => setMobileMenu(false)}>Privacy</a>
-          <button className="nav-mobile-launch" onClick={() => launch()}>Enter terminal <ArrowUpRight size={16} /></button>
-        </nav>
-        <div className="header-actions"><span className="header-note mono"><span className="status-dot" /> INDEPENDENT BY DESIGN</span><button className="button button--small button--outline header-launch" onClick={() => launch()}>Enter terminal <ArrowUpRight size={15}/></button><button className="menu-toggle icon-button" ref={menuRef} aria-label={mobileMenu ? 'Close navigation' : 'Open navigation'} aria-expanded={mobileMenu} aria-controls="main-navigation" onClick={() => setMobileMenu(!mobileMenu)}>{mobileMenu ? <X /> : <Menu />}</button></div>
-      </div>
-    </header>
+    <header className="site-header"><div className="header-inner"><Brand/>
+      <nav className={`main-nav ${mobileMenu ? 'main-nav--open' : ''}`} aria-label="Main navigation" id="main-navigation"><a href="#privacy" onClick={() => setMobileMenu(false)}>The idea</a><a href="#possibilities" onClick={() => setMobileMenu(false)}>Possibilities</a><a href="#models" onClick={() => setMobileMenu(false)}>The models</a><button className="mobile-studio-link" onClick={() => launch()}>Open studio <ArrowUpRight size={16}/></button></nav>
+      <div className="header-actions"><button className="header-studio" onClick={() => launch()}>Open studio <ArrowUpRight size={15}/></button><button className="menu-toggle" ref={menuRef} aria-label={mobileMenu ? 'Close navigation' : 'Open navigation'} aria-expanded={mobileMenu} aria-controls="main-navigation" onClick={() => setMobileMenu(!mobileMenu)}>{mobileMenu ? <X size={21}/> : <Menu size={21}/>}</button></div>
+    </div></header>
     <main id="main">
-      <section className="hero wrap" aria-labelledby="hero-title">
-        <div className="hero-copy">
-          <div className="eyebrow hero-eyebrow"><span className="status-dot" /> OPEN INTELLIGENCE <span className="eyebrow-divider">/</span> PRIVATE BY DESIGN</div>
-          <h1 id="hero-title">Intelligence.<br/><span>Off the record.</span><span className="hero-caret" aria-hidden="true">_</span></h1>
-          <p className="hero-description">An open mind deserves an open model.<br className="desktop-break"/> Think freely. Explore deeply. Keep your own counsel.</p>
-          <div className="hero-buttons"><button className="button button--primary" onClick={() => launch()}>Enter the terminal <ArrowUpRight size={19}/></button><a className="text-link" href="#models">Find your model <ArrowDown size={17}/></a></div>
-          <div className="hero-footnote mono"><LockKeyhole size={13}/><span>YOUR THOUGHTS. YOUR TERMS.</span></div>
-        </div>
-        <figure className="identity-art" aria-label="A fingerprint fading into the dark, representing an undisclosed identity">
-          <div className="art-topline mono"><span>FIG. 001 / THE INVISIBLE SELF</span><span className="art-cross">+</span></div>
-          <IdentityGlyph />
-          <figcaption className="art-caption mono"><span>LESS TO REVEAL.</span><span>[ ID : UNDISCLOSED ]</span></figcaption>
-        </figure>
-        <div className="hero-bottom mono"><span>THINK OUTSIDE THE FEED.</span><a href="#workflows" aria-label="Explore workflows">SCROLL TO EXPLORE <ArrowDown size={13}/></a></div>
-      </section>
-      <div className="principles-strip"><div className="wrap principles-inner">{[{ icon: Layers3, text: 'OPEN MODELS' }, { icon: LockKeyhole, text: 'PRIVATE WORKSPACE' }, { icon: Fingerprint, text: 'YOUR OWN PERSPECTIVE' }, { icon: TerminalIcon, text: 'ZERO NOISE' }].map(({ icon: Icon, text }, i) => <div className="principle" key={text}><span className="mono principle-number">0{i+1}</span><Icon size={17} strokeWidth={1.5}/><span className="mono">{text}</span></div>)}</div></div>
-
-      <section className="workflows-section wrap section" id="workflows" aria-labelledby="workflows-title">
-        <div className="section-heading"><div><div className="eyebrow">01 / ROOM TO THINK</div><h2 id="workflows-title">Good questions.<br/><span className="muted-heading">Unrestricted thinking.</span></h2></div><p>The next idea starts where the obvious answer ends. Bring a problem. Follow the possibilities.</p></div>
-        <div className="workflow-window">
-          <div className="window-topbar"><div className="window-controls" aria-hidden="true"><span/><span/><span/></div><span className="mono">VEIL / WORKSPACE</span><span className="mono window-topbar-end"><span className="status-dot"/> YOUR PERSPECTIVE</span></div>
-          <div className="workflow-tabs" role="tablist" aria-label="Ways to work">{workflows.map(({ id, name, icon: Icon }, i) => <button id={`workflow-tab-${id}`} ref={el => { tabRefs.current[i] = el; }} role="tab" aria-selected={activeWorkflow === i} aria-controls="workflow-panel" tabIndex={activeWorkflow === i ? 0 : -1} key={id} className={activeWorkflow === i ? 'active' : ''} onClick={() => setActiveWorkflow(i)} onKeyDown={e => selectTab(e, i)}><Icon size={16}/>{name}<ArrowUpRight size={13}/></button>)}<span className="workflow-tabs-label mono">CHOOSE A STARTING POINT</span></div>
-          <div className="workflow-body" id="workflow-panel" role="tabpanel" aria-labelledby={`workflow-tab-${workflow.id}`} tabIndex={0}>
-            <div className="workflow-question"><div className="mono panel-label"><span className="status-dot"/> {workflow.label}<span>01</span></div><h3>Start with<br/>a better question.</h3><p>“{workflow.prompt}”</p><button className="text-link text-link--lime" onClick={() => launch(workflow.prompt)}>Take it to the terminal <ArrowUpRight size={16}/></button></div>
-            <div className="workflow-direction"><div className="mono panel-label">SET THE DIRECTION<span>02</span></div><div className="workflow-code mono"><span className="code-comment">// a little less ordinary.</span>{workflow.code.map((line, i) => <div key={line}><span className="line-number">0{i+1}</span><span><span className="code-lime">{line.split('(')[0]}</span>({line.split('(')[1]}</span><span className="code-tick"><Check size={13}/></span></div>)}<div className="code-end"><span className="code-caret">▌</span></div></div><div className="direction-grid"><div><span className="mono">CONTEXT</span><p>{workflow.context}</p></div><div><span className="mono">INTENT</span><p>{workflow.direction}</p></div><div><span className="mono">FOCUS</span><p>{workflow.deliverable}</p></div></div></div>
-          </div>
-          <div className="window-footer mono"><span><LockKeyhole size={12}/> A CLEARER SPACE TO WORK</span><span>LESS FRICTION. MORE POSSIBILITY.</span></div>
-        </div>
-      </section>
-
-      <section className="protocol-section" id="protocol" aria-labelledby="protocol-title"><div className="wrap section">
-        <div className="section-heading"><div><div className="eyebrow">02 / A DIFFERENT PATH</div><h2 id="protocol-title">Your mind isn't<br/><span className="muted-heading">a data point.</span></h2></div><div className="protocol-intro"><p>A place to explore an unfinished thought, challenge a familiar idea, or find a direction of your own.</p><p>Less between you and the model. More room between the lines.</p></div></div>
-        <div className="protocol-map"><div className="protocol-line" aria-hidden="true"/><div className="protocol-node"><div className="node-icon"><Fingerprint size={29} strokeWidth={1.25}/></div><span className="eyebrow">01 / YOU</span><h3>A question worth asking.</h3><p>Your curiosity is the starting point.</p></div><div className="protocol-connector mono" aria-hidden="true">→</div><div className="protocol-node protocol-node--active"><div className="node-icon"><span className="node-brand">[v_]</span></div><span className="eyebrow">02 / YOUR WORKSPACE</span><h3>A space without the noise.</h3><p>One model. One conversation. Your focus.</p></div><div className="protocol-connector mono" aria-hidden="true">→</div><div className="protocol-node"><div className="node-icon"><Layers3 size={29} strokeWidth={1.25}/></div><span className="eyebrow">03 / YOUR PERSPECTIVE</span><h3>Something to think on.</h3><p>Go deeper. See differently. Make it yours.</p></div></div>
-        <div className="protocol-bottom mono"><span><ShieldCheck size={15}/> INDEPENDENCE IS THE POINT.</span><a href="#privacy">EXPLORE THE PHILOSOPHY <ArrowUpRight size={14}/></a></div>
-      </div></section>
-
-      <section className="models-section wrap section" id="models" aria-labelledby="models-title">
-        <div className="section-heading"><div><div className="eyebrow">03 / THE MODELS</div><h2 id="models-title">Choose your<br/><span className="muted-heading">way of thinking.</span></h2></div><p>A fast first thought or a deeper second look. Start with the model that fits your question.</p></div>
-        <div className="models-grid">
-          <article className="model-card"><div className="model-card-top"><span className="eyebrow">THE EVERYDAY EXPLORER</span><span className="model-index mono">M / 01</span></div><div className="model-title"><h3>VEIL Core</h3><div className="model-symbol model-symbol--core" aria-hidden="true"><span/><span/><span/></div></div><p>A clear starting point for writing, building, and exploring the next idea.</p><div className="model-tags mono"><span>VERSATILE</span><span>DIRECT</span><span>OPEN-ENDED</span></div><ul><li><Check size={15}/> Everyday questions and ideas</li><li><Check size={15}/> Code, drafts, and creative work</li><li><Check size={15}/> A fluid conversational pace</li></ul><button className="model-button" onClick={() => launch()}>Start with Core <ArrowUpRight size={18}/></button></article>
-          <article className="model-card model-card--reason"><div className="model-card-top"><span className="eyebrow">THE DEEPER THINKER</span><span className="model-index mono">M / 02</span></div><div className="model-title"><h3>VEIL Reason</h3><div className="model-symbol model-symbol--reason" aria-hidden="true"><span/><span/><span/></div></div><p>More room for complex questions, careful analysis, and the unexpected connection.</p><div className="model-tags mono"><span>DELIBERATE</span><span>ANALYTICAL</span><span>EXPLORATORY</span></div><ul><li><Check size={15}/> Problems with moving parts</li><li><Check size={15}/> Research and layered analysis</li><li><Check size={15}/> Reasoning from first principles</li></ul><button className="model-button" onClick={() => launch('', 'reason')}>Start with Reason <ArrowUpRight size={18}/></button></article>
-        </div>
-      </section>
-
-      <section className="privacy-section wrap section" id="privacy" aria-labelledby="privacy-title">
-        <div className="privacy-art"><div className="eyebrow">THE RIGHT TO A QUIET MIND.</div><IdentityGlyph compact/><span className="mono privacy-art-footer">[ KEEP A LITTLE TO YOURSELF. ]</span></div>
-        <div className="privacy-copy"><div className="eyebrow">04 / THE PHILOSOPHY</div><h2 id="privacy-title">Some things<br/>are just <span>yours.</span></h2><p>Not every question needs an audience.<br/>Not every idea needs a paper trail.</p><p>VEIL is built around a simple belief: the space between a thought and an answer should belong to you.</p><a className="text-link text-link--lime" href="#questions">A few things, in plain text <ArrowDown size={16}/></a></div>
-      </section>
-
-      <section className="questions-section wrap section" id="questions" aria-labelledby="questions-title"><div><div className="eyebrow">BEFORE YOU BEGIN</div><h2 id="questions-title">In plain text.</h2></div><div className="questions-list">{[
-        { q: 'What is VEIL?', a: 'A focused workspace for open intelligence. Choose a model, bring a question, and explore a perspective of your own.' },
-        { q: 'Which model should I choose?', a: 'Core is a starting point for everyday writing, coding, and exploration. Reason is the deeper-thinking option for complex questions and layered analysis.' },
-        { q: 'Can I shape the conversation?', a: 'Start from a blank page or use a starting point. In the terminal, choose your model and adjust the conversation preferences to suit the way you think.' },
-        { q: 'Where do I start?', a: 'Enter the terminal, pick a model, and write your first question. The best starting point is the one already on your mind.' },
-      ].map(({ q, a }, i) => <div className={`question-item ${openQuestion === i ? 'question-item--open' : ''}`} key={q}><h3><button aria-expanded={openQuestion === i} aria-controls={`answer-${i}`} id={`question-${i}`} onClick={() => setOpenQuestion(openQuestion === i ? null : i)}><span className="mono question-index">0{i+1}</span><span>{q}</span>{openQuestion === i ? <Minus size={18}/> : <Plus size={18}/>}</button></h3><div className="question-answer" id={`answer-${i}`} role="region" aria-labelledby={`question-${i}`} hidden={openQuestion !== i}><p>{a}</p></div></div>)}</div></section>
-
-      <section className="closing-section"><div className="wrap closing-inner"><div className="eyebrow"><span className="status-dot"/> AN OPEN MIND. A PRIVATE SPACE.</div><h2>Stay curious.<br/><span>Leave less behind.</span><span className="closing-caret" aria-hidden="true">_</span></h2><button className="button button--primary" onClick={() => launch()}>Enter the terminal <ArrowUpRight size={19}/></button><div className="closing-coordinate mono" aria-hidden="true">[ END OF TRANSMISSION ]<br/>BEGIN YOUR OWN.</div></div></section>
+      <section className="hero" aria-labelledby="hero-title"><div className="hero-text wrap"><div className="eyebrow hero-eyebrow">A PRIVATE STUDIO FOR AN OPEN MIND</div><h1 id="hero-title">For the thoughts<br/><em>you keep to yourself.</em></h1><p className="hero-description">A quieter kind of AI. More room to think,<br className="desktop-break"/> less to put on show.</p><button className="button button--primary hero-action" onClick={() => launch()}>Open your private studio <ArrowUpRight size={18}/></button></div><LetterScene/><div className="hero-bottom wrap"><span>A LITTLE SPACE FOR YOURSELF.</span><a href="#privacy">The thinking behind VEIL <ArrowDown size={14}/></a></div></section>
+      <section className="privacy-section" id="privacy" aria-labelledby="privacy-title"><div className="wrap privacy-inner"><div className="privacy-heading"><span className="eyebrow">PERSONAL BY NATURE</span><h2 id="privacy-title">Not every thought<br/><em>needs an audience.</em></h2></div><div className="privacy-aside"><FoldMark className="privacy-fold"/><p>The question before the question. A first draft. An idea you’re not quite ready to explain.</p><p>VEIL makes room for that part of thinking. The part that’s just for you.</p></div><div className="privacy-foot"><span>Less performance. More possibility.</span><span>WITH ROOM TO BE YOURSELF.</span></div></div></section>
+      <section className="possibilities-section section wrap" id="possibilities" aria-labelledby="possibilities-title"><div className="section-heading"><div><span className="eyebrow">WHERE COULD THIS LEAD?</span><h2 id="possibilities-title">A blank page.<br/><em>Endless directions.</em></h2></div><p>You don’t need to have it figured out.<br/>Just bring a little curiosity.</p></div><div className="notebooks">{startingPoints.map(({id, category, title, emphasis, description, prompt, icon:Icon, label, note}, i) => <article className={`notebook notebook--${id}`} key={id}><div className="notebook-top"><span>{category}</span><Icon size={17} strokeWidth={1.5}/></div><div className="notebook-title"><span className="notebook-number" aria-hidden="true">0{i+1}</span><h3>{title}<br/><em>{emphasis}</em></h3></div><p>{description}</p><div className={`notebook-drawing notebook-drawing--${id}`} aria-hidden="true">{id === 'make' ? <svg viewBox="0 0 250 100" fill="none"><path d="M14 77c36-90 106-82 100-33-7 40-65 5-15-27 47-30 83 23 83 41 0 12-35 20-28-1 6-19 41-19 77 8m-10-9 11 9-13 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg> : id === 'explore' ? <svg viewBox="0 0 250 100" fill="none"><circle cx="93" cy="50" r="34" stroke="currentColor" strokeWidth="1.3"/><circle cx="134" cy="50" r="34" stroke="currentColor" strokeWidth="1.3"/><circle cx="175" cy="50" r="34" stroke="currentColor" strokeWidth="1.3"/></svg> : <svg viewBox="0 0 250 100" fill="none"><path d="m40 73 60-51 63 44 45-36M40 73l63 10 60-17 45-36M100 22l3 61" stroke="currentColor" strokeWidth="1.3"/><circle cx="40" cy="73" r="3" fill="currentColor"/><circle cx="100" cy="22" r="3" fill="currentColor"/><circle cx="103" cy="83" r="3" fill="currentColor"/><circle cx="163" cy="66" r="3" fill="currentColor"/><circle cx="208" cy="30" r="3" fill="currentColor"/></svg>}</div><span className="notebook-note">{note}</span><button aria-label={label} onClick={() => launch(prompt)}>Try this thought <ArrowUpRight size={17}/></button></article>)}</div></section>
+      <section className="breathing-room wrap" aria-label="A little breathing room"><span className="breathing-rule"/><div><span>A thought doesn’t have to be polished.</span><em>It just has to be yours.</em></div><span className="breathing-rule"/></section>
+      <section className="models-section section wrap" id="models" aria-labelledby="models-title"><div className="section-heading"><div><span className="eyebrow">A GOOD PLACE TO BEGIN</span><h2 id="models-title">Your pace.<br/><em>Your perspective.</em></h2></div><p>Two ways into a conversation.<br/>Choose the one that feels like you.</p></div><div className="model-list"><article className="model-row"><div className="model-identity"><span className="model-name">VEIL CORE</span><h3>The first draft.</h3></div><div className="model-description"><span>QUICK, CURIOUS, EVERYDAY.</span><p>For making, writing, and following an interesting thought. A companion for the everyday questions.</p></div><button className="model-open" aria-label="Start with Core" onClick={() => launch('', 'core')}><ArrowUpRight size={24} strokeWidth={1.3}/></button></article><article className="model-row"><div className="model-identity"><span className="model-name">VEIL REASON</span><h3>The second look.</h3></div><div className="model-description"><span>PATIENT, CAREFUL, CONSIDERED.</span><p>For questions with layers. Take another angle, work through the details, and give the thought a little more time.</p></div><button className="model-open" aria-label="Start with Reason" onClick={() => launch('', 'reason')}><ArrowUpRight size={24} strokeWidth={1.3}/></button></article></div><div className="models-foot"><span>ONE PRIVATE STUDIO. YOUR OWN WAY OF THINKING.</span><button onClick={() => launch()}>Meet your studio <ArrowRight size={15}/></button></div></section>
+      <section className="questions-section section wrap" id="questions" aria-labelledby="questions-title"><div className="questions-heading"><span className="eyebrow">A LITTLE CLARITY</span><h2 id="questions-title">Good <br/><em>questions.</em></h2><p>A few things you might<br/>be wondering about.</p></div><div className="questions-list">{questions.map(({question, answer}, i) => <div className={`question-item ${openQuestion === i ? 'question-item--open' : ''}`} key={question}><h3><button id={`question-${i}`} aria-controls={`answer-${i}`} aria-expanded={openQuestion === i} onClick={() => setOpenQuestion(openQuestion === i ? null : i)}><span>{question}</span><span className="question-icon">{openQuestion === i ? <Minus size={17}/> : <Plus size={17}/>}</span></button></h3><div className="question-answer" id={`answer-${i}`} role="region" aria-labelledby={`question-${i}`} hidden={openQuestion !== i}><p>{answer}</p></div></div>)}</div></section>
+      <section className="closing-section" aria-labelledby="closing-title"><div className="wrap closing-inner"><div className="closing-fold" aria-hidden="true"/><span className="eyebrow">FOR YOUR EYES. FOR YOUR MIND.</span><h2 id="closing-title">Keep something<br/><em>just for you.</em></h2><button className="button button--paper" onClick={() => launch()}>Open your private studio <ArrowUpRight size={18}/></button><span className="closing-signature">Personally yours,<span>veil</span></span></div></section>
     </main>
-    <footer className="site-footer wrap"><Brand/><span className="mono">INDEPENDENT INTELLIGENCE.</span><div><a href="#models">Models</a><a href="#privacy">Privacy</a><button onClick={() => launch()}>Terminal <ArrowUpRight size={13}/></button></div><span className="footer-year mono">© {new Date().getFullYear()} VEIL</span></footer>
+    <footer className="site-footer wrap"><Brand/><span className="footer-message">A little space for yourself.</span><nav aria-label="Footer navigation"><a href="#privacy">The idea</a><a href="#models">Models</a><a href="#questions">Questions</a></nav><span className="footer-year">© {new Date().getFullYear()} VEIL</span></footer>
   </>;
 }
-
 export default App;
