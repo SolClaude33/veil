@@ -25,6 +25,10 @@ npm run preview
 
 `dist/` contains the static build. Fonts, the brand SVG, and generated WebP images are local. No authentication, payment services, wallet providers, or inference APIs are required.
 
+## Vercel project settings
+
+Import the repository into Vercel with **Root Directory** set to `.` and **Production Branch** set to `main`. The checked-in `vercel.json` selects the Vite framework, runs `npm ci` followed by `npm run build`, and publishes `dist`. No environment variables are required. Routing uses URL hashes, so direct navigation does not require a catch-all rewrite. `.vercelignore` keeps source-generation material, references, validation captures, local caches, and prebuilt output out of the build upload while preserving them in Git.
+
 The interface includes responsive navigation, notebook starting points, model selection, expandable questions, conversation composition, session history, and studio settings. `StudioShowcase.tsx` is a functional preview of the workspace: choosing Core or Reason and editing its prompt transfers both values into Studio. Core and Reason now include visible, accessible descriptions in both the showcase and Studio. Open studio is the primary landing action; Wallet is secondary and becomes an icon control on mobile. Wallet selection offers MetaMask, Rabby, and WalletConnect choices with confirmation, change, and disconnect states; it remains a visual preference shared across pages, without real connection or login. Conversation and wallet state stay in memory; assistant responses are not fabricated.
 
 Rates in `src/content/pricing.ts` use [Latens documentation](https://docs.latens.si/docs/pricing), verified October 12, 2026: Core references Small ($0.765 input / $1.275 output per million tokens), and Reason references Large ($1.275 / $2.295). The estimator includes input context and output/reasoning tokens and accepts non-negative safe integers. No credit purchase or billing is implemented.
