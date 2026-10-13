@@ -32,6 +32,11 @@ const startingPoints = [
   },
 ] as const;
 
+const modelDescriptions = {
+  core: "Everyday writing and exploration.",
+  reason: "Careful, layered reasoning.",
+} as const;
+
 export default function StudioShowcase({ onLaunch }: StudioShowcaseProps) {
   const [draft, setDraft] = useState("");
   const [model, setModel] = useState<"core" | "reason">("core");
@@ -77,23 +82,28 @@ export default function StudioShowcase({ onLaunch }: StudioShowcaseProps) {
         <div className="showcase-workspace">
           <header className="showcase-toolbar">
             <span className="showcase-mobile-brand">veil</span>
-            <div className="showcase-model-picker" role="group" aria-label="Choose a VEIL model">
-              <button
-                className={model === "core" ? "is-active" : ""}
-                type="button"
-                aria-pressed={model === "core"}
-                onClick={() => setModel("core")}
-              >
-                Core
-              </button>
-              <button
-                className={model === "reason" ? "is-active" : ""}
-                type="button"
-                aria-pressed={model === "reason"}
-                onClick={() => setModel("reason")}
-              >
-                Reason
-              </button>
+            <div className="showcase-model-choice">
+              <div className="showcase-model-picker" role="group" aria-label="Choose a VEIL model" aria-describedby="showcase-model-description">
+                <button
+                  className={model === "core" ? "is-active" : ""}
+                  type="button"
+                  aria-pressed={model === "core"}
+                  onClick={() => setModel("core")}
+                >
+                  Core
+                </button>
+                <button
+                  className={model === "reason" ? "is-active" : ""}
+                  type="button"
+                  aria-pressed={model === "reason"}
+                  onClick={() => setModel("reason")}
+                >
+                  Reason
+                </button>
+              </div>
+              <p id="showcase-model-description" className="showcase-model-description" aria-live="polite">
+                {modelDescriptions[model]}
+              </p>
             </div>
             <span className="showcase-toolbar-label">Private canvas</span>
           </header>

@@ -57,6 +57,11 @@ const suggestions = [
   },
 ] as const;
 
+const modelDescriptions = {
+  core: "Everyday writing and exploration.",
+  reason: "Careful, layered reasoning.",
+} as const;
+
 function createTitle(value: string) {
   const normalized = value.replace(/\s+/g, " ").trim();
   return normalized.length > 42 ? `${normalized.slice(0, 39)}…` : normalized;
@@ -362,6 +367,7 @@ export default function Terminal({
             <Sparkles size={14} aria-hidden="true" />
             <select
               value={model}
+              aria-describedby="terminal-model-description"
               onChange={(event) => setModel(event.target.value as "core" | "reason")}
             >
               <option value="core">VEIL Core</option>
@@ -441,7 +447,10 @@ export default function Terminal({
               }}
             />
             <div className="workspace-composer-footer">
-              <span>{model === "reason" ? "Reasoning" : "Core"}</span>
+              <div className="workspace-model-context">
+                <span>VEIL {model === "reason" ? "Reason" : "Core"}</span>
+                <small id="terminal-model-description" aria-live="polite">{modelDescriptions[model]}</small>
+              </div>
               <button type="submit" aria-label="Add message" disabled={!draft.trim()}>
                 <ArrowUp size={17} strokeWidth={2.2} aria-hidden="true" />
               </button>

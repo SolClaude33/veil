@@ -96,7 +96,9 @@
 .workspace-composer textarea { width: 100%; min-height: 28px; max-height: 140px; resize: none; overflow-y: hidden; padding: 0; border: 0; outline: 0; color: var(--terminal-text); background: transparent; font-size: 14px; line-height: 1.6; }
 .workspace-composer textarea::placeholder { color: #7b8395; }
 .workspace-composer-footer { margin-top: 7px; }
-.workspace-composer-footer > span { color: var(--terminal-muted); font-size: 9px; font-weight: 650; letter-spacing: 0.12em; text-transform: uppercase; }
+.workspace-model-context { min-width: 0; display: grid; gap: 3px; color: var(--terminal-muted); }
+.workspace-model-context > span { font-size: 9px; font-weight: 650; letter-spacing: 0.12em; text-transform: uppercase; }
+.workspace-model-context > small { overflow: hidden; font-size: 10px; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }
 .workspace-composer-footer button { width: 35px; height: 35px; display: grid; place-items: center; border: 0; border-radius: 50%; color: #fff; background: var(--terminal-ink); cursor: pointer; }
 .workspace-composer-footer button:disabled { color: #9297a4; background: #e5e5df; cursor: not-allowed; }
 .workspace-composer-hint { margin: 9px 0 0; text-align: center; color: var(--terminal-muted); font-size: 9px; }

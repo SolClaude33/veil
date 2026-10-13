@@ -12,7 +12,7 @@ export default function LetterStory({ onLaunch }: { onLaunch: () => void }) {
           <div className="letter-intro">
             <span className="eyebrow">OPEN INTELLIGENCE. PERSONAL SPACE.</span>
             <h1 id="hero-title"><span>Think freely.</span><em>Keep it yours.</em></h1>
-            <p>A space for the questions, drafts<br />and ideas you keep to yourself.</p>
+            <p>Your personal AI studio for writing,<br />thinking, and exploring.</p>
           </div>
           <div className="letter-reveal" aria-hidden="true">
             <span className="eyebrow">A LITTLE ROOM FOR POSSIBILITY</span>

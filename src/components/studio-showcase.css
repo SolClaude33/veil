@@ -59,11 +59,13 @@
 .showcase-history p { margin: 14px 0 0; padding: 14px 10px; border: 1px solid rgba(105, 113, 135, .2); border-radius: 10px; color: var(--showcase-muted); font-size: 10px; line-height: 1.45; }
 .showcase-sidebar-note { margin-top: auto; padding-top: 13px; border-top: 1px solid var(--showcase-line); color: var(--showcase-muted); font-size: 9px; }
 
-.showcase-workspace { min-width: 0; display: grid; grid-template-rows: 58px minmax(0, 1fr); background: linear-gradient(rgba(40, 63, 131, .022) 1px, transparent 1px) 0 58px / 100% 32px, var(--showcase-paper); }
+.showcase-workspace { min-width: 0; display: grid; grid-template-rows: 78px minmax(0, 1fr); background: linear-gradient(rgba(40, 63, 131, .022) 1px, transparent 1px) 0 78px / 100% 32px, var(--showcase-paper); }
 .showcase-toolbar { position: relative; display: flex; align-items: center; justify-content: flex-end; padding: 0 17px; border-bottom: 1px solid var(--showcase-line); background: rgba(245, 243, 237, .9); }
-.showcase-model-picker { position: absolute; left: 50%; top: 4px; transform: translateX(-50%); display: flex; padding: 3px; border: 1px solid var(--showcase-line); border-radius: 999px; background: var(--showcase-panel); }
+.showcase-model-choice { position: absolute; left: 50%; top: 4px; transform: translateX(-50%); display: grid; justify-items: center; gap: 5px; }
+.showcase-model-picker { display: flex; padding: 3px; border: 1px solid var(--showcase-line); border-radius: 999px; background: var(--showcase-panel); }
 .showcase-model-picker button { min-width: 67px; min-height: 44px; padding: 0 11px; border: 0; border-radius: 999px; color: var(--showcase-muted); background: transparent; font-size: 10px; font-weight: 650; cursor: pointer; }
 .showcase-model-picker button.is-active { color: #fff; background: var(--showcase-ink); }
+.showcase-model-description { margin: 0; color: var(--showcase-muted); font-size: 10px; line-height: 1.25; white-space: nowrap; }
 .showcase-toolbar-label { color: var(--showcase-muted); font-size: 8px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
 .showcase-mobile-brand { display: none; font-family: "Instrument Serif", Georgia, serif; color: var(--showcase-ink); font-size: 24px; }
 
@@ -115,7 +117,7 @@
   .showcase-toolbar { justify-content: space-between; padding-inline: 13px; }
   .showcase-mobile-brand { display: block; }
   .showcase-toolbar-label { display: none; }
-  .showcase-model-picker { position: static; transform: none; }
+  .showcase-model-choice { position: static; transform: none; }
   .showcase-workspace-body { padding: 36px 16px 18px; }
   .showcase-empty-copy h3 { font-size: clamp(45px, 13vw, 61px); }
   .showcase-starting-points { gap: 6px; }
