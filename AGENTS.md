@@ -1,10 +1,10 @@
 # Repository Guidelines
 
-VEIL is a frontend for a private AI studio. Its independent visual concept is personal correspondence: paper, folded notes, and blue ink. Latens supplied the original product category; its visual system is not the design reference for the current direction. The project context lives in the personal project note identified as `Projects/veil`; resolve its vault location through Nicol's personal workflow. Keep plans, decisions, and validation summaries in that note.
+VEIL is a frontend for a private AI studio. Its v6 concept is a correspondence theatre: a blue opening stage gives way to warm paper, folded notes, and editorial reading. Latens supplied the product category, not the visual system. Project context lives in the personal note `Projects/veil`; keep plans, decisions, and validation summaries there.
 
 ## Structure
 
-The application uses React, TypeScript, and Vite. `src/App.tsx` owns navigation and landing. `Terminal.tsx` owns the workspace, `Docs.tsx` documentation/pricing, `Wallet.tsx` wallet selection, and `Brand.tsx` vector identity, inside `src/components/`. `EnvelopeArtwork.tsx` composes generated layers; `LetterStory.tsx`, `JourneyAnchor.tsx`, and `src/hooks/useCorrespondenceJourney.ts` own the reversible, whole-page letter journey. Rates live in `src/content/pricing.ts`; tokens in `src/styles.css`. Serve SVG/WebP media from `public/assets/`; keep original generations/metadata in `assets-src/`, references in `references/`, and real captures in `validation/`. Preserve unrelated projects.
+The application uses React, TypeScript, and Vite. `src/App.tsx` owns routing and landing composition. Components contain Studio, Docs/Pricing, Wallet, Brand, and the correspondence artwork. `StudioShowcase.tsx` previews the workspace and passes its selected model and prompt into Studio. `LetterStory.tsx`, `JourneyAnchor.tsx`, and `src/hooks/useCorrespondenceJourney.ts` direct the hero and docked scene states: independent seal/flap/note channels, invisible fade-and-snap handoffs, an open middle journey, and one final close. Rates live in `src/content/pricing.ts`; shared tokens live in `src/styles.css`. Serve media from `public/assets/`; keep source generations in `assets-src/`, references—including `correspondence-theatre.svg`—in `references/`, and captures in `validation/`.
 
 ## Commands
 
@@ -12,7 +12,7 @@ Run commands from this project root. `npm install` installs the lockfile depende
 
 ## Conventions and Validation
 
-All copy, metadata, errors, and accessibility labels must be English. Preserve warm paper `#f5f3ed`, blue ink `#283f83`, Instrument Serif display type, and Inter body text. Keep functional copy as markup; use correspondence imagery and CSS/SVG details. Images require a verified estimate of at most 3 credits each before generation. Inspect desktop/mobile captures, short viewports, and relevant breakpoints. Exercise routes, docs search, pricing validation, wallet selection, studio controls, keyboard focus, modal cleanup, and forward/reverse letter scroll. Preserve the static reduced-motion path and dispose listeners/animation frames on unmount. Latens pricing is a dated reference; verify its source before changing rates.
+All interface copy, metadata, errors, and accessibility labels must be English. Preserve paper `#f5f3ed`, ink `#283f83`, Instrument Serif, and Inter. Keep functional text in markup. Images require a verified estimate of at most 3 credits each before generation; v6 reuses six existing assets and generated none. Inspect desktop, mobile, short viewports, and breakpoints. Exercise routes, Docs search, pricing validation, wallet selection, showcase-to-Studio transfer, keyboard focus, modal cleanup, and forward/reverse theatre scroll. Preserve the static reduced-motion path and dispose listeners, observers, and frames on unmount. Latens pricing is dated source material; verify it before changing rates.
 
 ## Boundaries
 

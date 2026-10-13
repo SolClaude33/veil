@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+  <defs><radialGradient id="ink"><stop stop-color="#354d8c"/><stop offset="1" stop-color="#182d62"/></radialGradient><filter id="shadow"><feDropShadow dx="0" dy="32" stdDeviation="28" flood-color="#081332" flood-opacity=".65"/></filter></defs>
+  <rect width="1440" height="900" fill="url(#ink)"/>
+  <g fill="#f5f3ed" font-family="Georgia,serif"><text x="70" y="67" font-size="38">V VEIL</text><text x="720" y="317" text-anchor="middle" font-size="216" letter-spacing="-9">Think freely.</text></g>
+  <g fill="#d2dcf2" font-family="Arial,sans-serif" font-size="13"><text x="605" y="58">The idea</text><text x="692" y="58">Models</text><text x="770" y="58">Docs</text><text x="827" y="58">Pricing</text><text x="1130" y="58">Connect wallet ↗</text><text x="720" y="151" text-anchor="middle" letter-spacing="3" font-size="10">A PRIVATE PLACE FOR OPEN INTELLIGENCE</text></g>
+  <path d="M60 91H1380" stroke="#c5d1ec" opacity=".18"/>
+  <g transform="translate(463 414) rotate(-9 270 155)" filter="url(#shadow)"><rect width="540" height="310" rx="3" fill="#e8e0cd"/><path d="M0 0L270 190L540 0V310H0Z" fill="#f2eddf"/><path d="M0 310L270 165L540 310" fill="#ebe4d5" stroke="#d5cbb8"/><path d="M0 0L270 190L540 0" fill="#f6f0e2" stroke="#d8d0be"/><circle cx="270" cy="186" r="39" fill="#293f81"/><text x="270" y="202" fill="#e7e9e8" text-anchor="middle" font-size="42" font-family="Georgia,serif">V</text></g>
+  <text x="70" y="651" font-size="44" font-style="italic" font-family="Georgia,serif" fill="#e7e7e2">Keep it yours.</text>
+  <text x="70" y="699" font-family="Arial,sans-serif" font-size="15" fill="#becbea">A space for questions, drafts</text><text x="70" y="725" font-family="Arial,sans-serif" font-size="15" fill="#becbea">and ideas you keep to yourself.</text>
+  <rect x="70" y="800" width="210" height="52" rx="26" fill="#f5f3ed"/><text x="94" y="832" font-family="Arial,sans-serif" font-size="14" fill="#263f80">Open your studio ↗</text><path d="M720 827h95" stroke="#99add9"/><text x="1170" y="832" fill="#c5d0eb" font-family="Arial,sans-serif" font-size="12">Scroll to unfold ↓</text>
+</svg>
