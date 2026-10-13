@@ -1,10 +1,9 @@
 .veil-brand {
-  --veil-cut: var(--bg, #f5f3ed);
-  width: 148px;
+  width: 126px;
   height: 38px;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex: 0 0 auto;
   color: var(--ink, #283f83);
   text-decoration: none;
@@ -25,14 +24,18 @@
 }
 
 .veil-wordmark {
-  width: 104px;
-  height: 32px;
+  width: 84px;
+  height: 38px;
   display: block;
-  overflow: visible;
+  font-family: "Inter Variable", Inter, sans-serif;
+  font-size: 44px;
+  font-weight: 500;
+  letter-spacing: -1.9px;
+  line-height: .85;
 }
 
 .veil-brand.is-compact {
-  width: 131px;
+  width: 112px;
   height: 34px;
   gap: 10px;
 }
@@ -43,6 +46,25 @@
 }
 
 .veil-brand.is-compact .veil-wordmark {
-  width: 92px;
-  height: 28px;
+  width: 72px;
+  height: 32px;
+  font-size: 37px;
+  letter-spacing: -1.6px;
+}
+
+.site-header .veil-brand.is-default,
+.site-footer .veil-brand.is-default { width: 126px; }
+
+@media (max-width: 900px) {
+  .site-header .veil-brand.is-default { width: 116px; }
+}
+
+@media (max-width: 680px) {
+  .site-header .veil-brand.is-default { width: 110px; }
+  .site-header .veil-wordmark { font-size: 32px; letter-spacing: -1.35px; line-height: .85; }
+  .site-footer .veil-wordmark { font-size: 35px; letter-spacing: -1.5px; }
+}
+
+@media (max-width: 360px) {
+  .site-header .veil-brand.is-default { width: 38px; }
 }

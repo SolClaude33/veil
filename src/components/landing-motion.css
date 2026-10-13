@@ -1,0 +1,117 @@
+.section-artwork-motion {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  transform: translate3d(0, var(--parallax-y, 0), 0) rotate(var(--parallax-rotate, 0deg));
+  transform-origin: 50% 55%;
+  will-change: transform;
+}
+
+.has-reveals .landing-main :is(.privacy-heading, .privacy-aside, .section-heading, .questions-heading) [data-motion] {
+  transition-duration: .68s, .78s;
+}
+
+.landing-main .notebook-drawing {
+  transition: translate .35s ease, rotate .35s ease;
+}
+
+.has-landing-motion .landing-main .notebook-drawing :is(path, circle) {
+  stroke-dasharray: 620;
+  stroke-dashoffset: 620;
+  transition: stroke-dashoffset 1.15s cubic-bezier(.2, .72, .22, 1);
+}
+
+.has-landing-motion .landing-main .notebook-drawing circle {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+}
+
+.has-landing-motion .landing-main .notebook.is-inked .notebook-drawing :is(path, circle) {
+  stroke-dashoffset: 0;
+}
+
+.has-landing-motion .landing-main .notebook:focus-within .notebook-drawing :is(path, circle) {
+  stroke-dashoffset: 0;
+}
+
+.has-landing-motion .landing-main .notebook-drawing circle[fill] {
+  transform-box: fill-box;
+  transform-origin: center;
+  scale: 0;
+  transition: stroke-dashoffset 1.15s cubic-bezier(.2, .72, .22, 1), scale .38s ease .55s;
+}
+
+.has-landing-motion .landing-main .notebook.is-inked .notebook-drawing circle[fill] {
+  scale: 1;
+}
+
+.has-landing-motion .landing-main .notebook:focus-within .notebook-drawing circle[fill] {
+  scale: 1;
+}
+
+.landing-main .notebook:is(:hover, :focus-within) .notebook-drawing {
+  translate: 0 -3px;
+  rotate: -.45deg;
+}
+
+.has-reveals .breathing-room[data-motion] .breathing-rule {
+  transform: scaleX(0);
+  transition: transform .9s cubic-bezier(.2, .72, .22, 1) var(--reveal-delay, 0ms);
+}
+
+.has-reveals .breathing-room[data-motion] .breathing-rule:first-child { transform-origin: right; }
+.has-reveals .breathing-room[data-motion] .breathing-rule:last-child { transform-origin: left; }
+.has-reveals .breathing-room[data-motion].is-revealed .breathing-rule { transform: scaleX(1); }
+
+.question-answer {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition: grid-template-rows .34s cubic-bezier(.2, .72, .22, 1), opacity .24s ease;
+}
+
+.question-answer[hidden] {
+  display: grid !important;
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+
+.question-answer-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.question-icon {
+  transition: color .22s ease, background .22s ease, border-color .22s ease, rotate .32s cubic-bezier(.2, .72, .22, 1);
+}
+
+.question-item--open .question-icon { rotate: 180deg; }
+
+.landing-main :is(.notebook > button, .model-open, .models-foot > button, .closing-inner > .button) svg {
+  transition: transform .25s cubic-bezier(.2, .72, .22, 1);
+}
+
+.landing-main :is(.notebook > button, .model-open, .models-foot > button, .closing-inner > .button):is(:hover, :focus-visible) svg {
+  transform: translate(3px, -3px) rotate(3deg);
+}
+
+@media (max-width: 680px) {
+  .section-artwork-motion { will-change: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-artwork-motion { transform: none; will-change: auto; }
+  .landing-main .notebook-drawing,
+  .landing-main .notebook-drawing :is(path, circle),
+  .landing-main .notebook-drawing circle[fill],
+  .has-reveals .breathing-room[data-motion] .breathing-rule,
+  .question-answer,
+  .question-icon,
+  .landing-main :is(.notebook > button, .model-open, .models-foot > button, .closing-inner > .button) svg {
+    transition: none;
+  }
+  .landing-main .notebook-drawing :is(path, circle) { stroke-dashoffset: 0; }
+  .landing-main .notebook-drawing circle[fill] { scale: 1; }
+  .has-reveals .breathing-room[data-motion] .breathing-rule { transform: none; }
+}
