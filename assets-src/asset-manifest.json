@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12",
+  "updated": "2026-10-13",
   "assets": [
     {
       "name": "hero-correspondence-v01",
@@ -146,6 +146,114 @@
         1536,
         1024
       ]
+    },
+    {
+      "name": "privacy-paper-sanctuary-v01",
+      "purpose": "Landing privacy: folded paper and frosted blue glass expressing personal space",
+      "provider": "Higgsfield",
+      "model": "gpt_image_2_5",
+      "variant": "flare",
+      "quality": "high",
+      "resolution": "2k",
+      "aspect_ratio": "3:2",
+      "count": 1,
+      "background": "transparent",
+      "references": [
+        "e2dd34de-c113-4134-b5e5-7365daca2589"
+      ],
+      "estimated_credits_exact": 2.75,
+      "job_id": "c3a11561-6450-49e4-a9a2-2f0ccdb077b1",
+      "prompt": "Use case: premium editorial product photograph, transparent website production asset for VEIL's privacy section. Use the reference ONLY for tactile materials, restrained warm ivory and muted cobalt palette, and softly directional studio lighting. New subject, absolutely no envelope and no wax seal. Create a small sculptural sanctuary of unprinted cotton paper: three warm ivory sheets folded into upright broad curved wings, sheltering one smaller pale periwinkle-blue folded sheet in the center. A single thin upright blue-tinted frosted glass panel sits behind and partly beside the folds, gently diffusing them; it must look real and elegant, not like a digital shield or a product container. Composition feels like thoughts protected within personal space, sophisticated art-gallery stationery sculpture, quiet and intimate. Three-quarter frontal view from slightly above, soft light from upper left, authentic paper fibres and delicate glass edges, fine diffuse contact shadow directly beneath. Palette ivory #f5f3ed, periwinkle #d5dce9, deep ink-blue #283f83; no saturated cyan. Entire compact sculpture occupies central 75 percent width and 70 percent height of a horizontal 3:2 frame, generous clean transparent margins so no parts are cropped. Genuine alpha transparent background, no desk or studio backdrop, no solid rectangle, no baked checkerboard. Standalone production object photograph, not a website mockup. No readable writing, letters, numbers, typography, branding, logos, UI, humans, hands, devices, envelopes, wax seals, locks, shields, money, neon or sci-fi imagery. All functional text will be HTML.",
+      "source": "assets-src/privacy-paper-sanctuary-v01.png",
+      "final": "public/assets/privacy-paper-sanctuary-v01.webp",
+      "status": "generated and integrated; inspected standalone and in desktop/mobile layouts",
+      "actual_charged_credits": null,
+      "width": 2048,
+      "height": 1360,
+      "final_bytes": 207498,
+      "encoding": {
+        "format": "WebP",
+        "quality": 90,
+        "method": 6,
+        "exact": true,
+        "alpha_quality": 100,
+        "alpha_difference": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "possibilities-paper-ribbon-v01",
+      "purpose": "Landing possibilities: paper ribbon opening into different directions",
+      "provider": "Higgsfield",
+      "model": "gpt_image_2_5",
+      "variant": "flare",
+      "quality": "high",
+      "resolution": "2k",
+      "aspect_ratio": "3:2",
+      "count": 1,
+      "background": "transparent",
+      "references": [
+        "c3a11561-6450-49e4-a9a2-2f0ccdb077b1"
+      ],
+      "estimated_credits_exact": 2.75,
+      "job_id": "92e229d8-4fbb-41cb-a1f1-5363654c5fb2",
+      "prompt": "Create a premium editorial object photograph with a genuine alpha transparent background for VEIL's 'A blank page. Endless directions.' section. Use the supplied reference solely for refined cotton-paper texture, warm ivory #f5f3ed, dusty periwinkle #d5dce9, restrained ink-blue #283f83 and soft light from upper left. Make a completely different subject, with NO glass panel, upright sanctuary, envelope, or seal. A broad satin-matte strip of pale periwinkle cotton paper makes one sweeping elegant open loop, then extends into three gently diverging loose tails, floating only slightly above two blank warm ivory sheets that lie loosely offset below. The paper ribbon is the hero, an airy physical sculptural gesture of ideas taking different directions. It must be recognizable as a wide folded paper strip with realistic paper thickness and subtle creases, not a fabric bow, tangled ribbon, infinity symbol or abstract shiny blob. Camera: three-quarter frontal overhead, simple calm arrangement with a clear horizontal silhouette. Objects fill about 78 percent of frame width and 66 percent height, centered, all extremities visible with safe transparent margins. Natural gentle contact shadows directly underneath, authentic tactile fine fibres, subtle blue on ivory contrast, no heavy dark aura. High-end art-directed stationery photography, intimate and optimistic. Transparent alpha only, no background, no desk, no studio rectangle, no checkerboard. No typography, text, writing, letters, numbers, logos, branding, user interface, humans, hands, computers, coins, neon or sci-fi effects. This is an image asset, not a web design comp.",
+      "source": "assets-src/possibilities-paper-ribbon-v01.png",
+      "final": "public/assets/possibilities-paper-ribbon-v01.webp",
+      "status": "generated and integrated; inspected standalone and in desktop/mobile layouts",
+      "actual_charged_credits": null,
+      "width": 2048,
+      "height": 1360,
+      "final_bytes": 282946,
+      "encoding": {
+        "format": "WebP",
+        "quality": 90,
+        "method": 6,
+        "exact": true,
+        "alpha_quality": 100,
+        "alpha_difference": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "models-study-pair-v01",
+      "purpose": "Landing models: open ivory notebook and closed blue linen folio",
+      "provider": "Higgsfield",
+      "model": "gpt_image_2_5",
+      "variant": "flare",
+      "quality": "high",
+      "resolution": "2k",
+      "aspect_ratio": "3:2",
+      "count": 1,
+      "background": "transparent",
+      "references": [
+        "c3a11561-6450-49e4-a9a2-2f0ccdb077b1"
+      ],
+      "estimated_credits_exact": 2.75,
+      "job_id": "e717ea3b-fd54-461b-9771-aab7bf6bb71a",
+      "prompt": "Create a premium editorial object photograph with genuine alpha transparent background for VEIL's two AI model choices, 'The first draft' and 'The second look'. Use the supplied reference solely for warm cotton-paper materials, dusty periwinkle and ink-blue palette, subtle physical texture and soft upper-left studio illumination. Do NOT copy its upright curved-paper sculpture or glass panel. New composition: two distinct beautifully crafted personal folios placed together at opposing gentle diagonals. On the left, an open warm ivory lay-flat notebook, both pages completely blank, a softly lifted corner and natural paper thickness. On the right and slightly behind, a closed deep ink-blue linen-covered slim journal with a few pale periwinkle page edges visible. One slender unbranded muted blue pencil rests across the ivory notebook gutter. These are ordinary sophisticated writing objects representing two tempos of thinking, with genuine linen grain, ivory paper fibres, precise handmade binding and soft natural contact shadows. The two folios form a clear compact asymmetrical horizontal pair viewed from an elevated three-quarter angle, approximately 75 percent of frame width and 62 percent height. Generous fully transparent margins and every object completely visible; balanced room between the folios, no repeated identical books. Palette #f5f3ed warm ivory, #d5dce9 periwinkle, #283f83 ink blue, not black/navy. No background or desk, no solid rectangular backdrop, no baked checkerboard or heavy dark halo. No readable writing, text, letters, numbers, lines on pages, logos, embossed wordmarks, UI, screens, people, hands, envelopes, wax seals, locks, shields, coins or neon. Standalone production photograph, not a website mockup.",
+      "source": "assets-src/models-study-pair-v01.png",
+      "final": "public/assets/models-study-pair-v01.webp",
+      "status": "generated and integrated; inspected standalone and in desktop/mobile layouts",
+      "actual_charged_credits": null,
+      "width": 2048,
+      "height": 1360,
+      "final_bytes": 320134,
+      "encoding": {
+        "format": "WebP",
+        "quality": 90,
+        "method": 6,
+        "exact": true,
+        "alpha_quality": 100,
+        "alpha_difference": [
+          0,
+          0
+        ]
+      }
     }
   ],
   "estimated_total_credits_exact": 16.5,
