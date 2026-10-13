@@ -15,6 +15,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
+import { Brand } from "./Brand";
 import { WalletButton } from "./Wallet";
 import "./terminal.css";
 
@@ -283,19 +284,7 @@ export default function Terminal({
         inert={(isMobile && !sidebarOpen) || settingsOpen ? true : undefined}
       >
         <div className="terminal-sidebar-header">
-          <button className="terminal-brand" type="button" onClick={onExit} aria-label="Return to VEIL home">
-            <svg
-              className="terminal-brand-mark"
-              viewBox="0 0 32 34"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path d="M4 4h24v25H4V4Z" fill="none" stroke="currentColor" strokeWidth="1.4" />
-              <path d="m4 4 12 16L28 4M4 29l12-9 12 9" fill="none" stroke="currentColor" strokeWidth="1.4" />
-              <path d="m16 20 12-16v25L16 20Z" fill="currentColor" opacity=".12" />
-            </svg>
-            <span>veil</span>
-          </button>
+          <Brand variant="compact" className="terminal-brand" onClick={onExit} />
           <button
             ref={sidebarCloseRef}
             className="terminal-sidebar-close"

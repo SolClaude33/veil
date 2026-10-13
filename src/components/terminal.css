@@ -27,8 +27,7 @@
 .terminal-sidebar::after { content: ""; position: absolute; right: -1px; bottom: 0; width: 56px; height: 56px; pointer-events: none; background: linear-gradient(135deg, transparent 49%, rgba(40, 63, 131, 0.07) 50%); }
 .terminal-sidebar-header, .workspace-topbar, .workspace-settings-heading, .workspace-setting-copy, .workspace-setting-row, .workspace-composer-footer { display: flex; align-items: center; justify-content: space-between; }
 
-.terminal-brand { display: flex; align-items: center; gap: 12px; padding: 2px; border: 0; background: none; color: var(--terminal-text); font-family: "Instrument Serif", Georgia, serif; font-size: 31px; font-weight: 400; line-height: 1; letter-spacing: -0.035em; cursor: pointer; }
-.terminal-brand-mark { flex: 0 0 auto; width: 24px; height: 28px; color: var(--terminal-ink); }
+.terminal-sidebar .terminal-brand { --veil-cut: #eeede6; }
 .terminal-sidebar-close { display: none; }
 
 .terminal-new-button { width: 100%; min-height: 47px; margin-top: 44px; display: flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid var(--terminal-ink); border-radius: 999px; background: var(--terminal-ink); color: #fff !important; font-size: 13px; font-weight: 550; cursor: pointer; box-shadow: 0 7px 18px rgba(40, 63, 131, 0.12); transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease; }

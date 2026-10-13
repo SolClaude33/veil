@@ -1,0 +1,48 @@
+.veil-brand {
+  --veil-cut: var(--bg, #f5f3ed);
+  width: 148px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  color: var(--ink, #283f83);
+  text-decoration: none;
+}
+
+.veil-brand:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+  border-radius: 3px;
+}
+
+.veil-symbol {
+  width: 31px;
+  height: 31px;
+  display: block;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.veil-wordmark {
+  width: 104px;
+  height: 32px;
+  display: block;
+  overflow: visible;
+}
+
+.veil-brand.is-compact {
+  width: 131px;
+  height: 34px;
+  gap: 10px;
+}
+
+.veil-brand.is-compact .veil-symbol {
+  width: 27px;
+  height: 27px;
+}
+
+.veil-brand.is-compact .veil-wordmark {
+  width: 92px;
+  height: 28px;
+}

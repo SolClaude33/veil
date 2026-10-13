@@ -3,7 +3,7 @@
   "assets": [
     {
       "name": "hero-correspondence-v01",
-      "purpose": "Landing hero: tactile private correspondence",
+      "purpose": "Static reduced-motion fallback for landing journey frames; original v3 hero preserved in history",
       "provider": "Higgsfield",
       "model": "gpt_image_2_5",
       "variant": "flare",
@@ -64,6 +64,90 @@
       "final": "public/assets/credits-still-life-v01.webp",
       "status": "integrated; inspected in desktop and mobile layouts",
       "actual_charged_credits": null
+    },
+    {
+      "name": "envelope-front-v01",
+      "purpose": "Animated correspondence journey: realistic transparent envelope front",
+      "provider": "Higgsfield",
+      "model": "gpt_image_2_5",
+      "variant": "flare",
+      "quality": "high",
+      "resolution": "2k",
+      "aspect_ratio": "3:2",
+      "count": 1,
+      "background": "transparent",
+      "references": [
+        "e2dd34de-c113-4134-b5e5-7365daca2589"
+      ],
+      "estimated_credits_exact": 2.75,
+      "actual_charged_credits": null,
+      "job_id": "90e36d34-cd94-4a85-af66-4e45da3386ef",
+      "prompt": "Production asset for a scroll-animated premium stationery website. Generate ONLY the front paper shell of an open ivory cotton-paper envelope, isolated on a genuinely transparent alpha background. Use the reference for ivory paper texture, warm restrained material and blue-brand correspondence atmosphere, but remove all blue cards, wax seals, text and props. Straight-on orthographic view, no camera angle, no rotation, no perspective, symmetrical horizontal envelope. The front shell has a deep V-shaped open upper edge: the top-left and top-right corners are high, the upper edge dips to the middle about 50 percent down; the entire triangular opening above that V must be transparent so a separate note can slide behind it. Show the realistic left/right folded paper panels and bottom triangular folded panel, with tactile cotton fibers, subtle creases and delicate seam shadows. The outer envelope body is a neat horizontal rectangle about 1.75 times as wide as tall. Center it, occupying about 90 percent frame width, fully visible. Natural soft lighting from upper left, warm ivory #f5f0e4, authentic high-end paper detail. No back panel across the open V, no top flap, no insert, no seal, no logo, no printed words, no hands, no desk, no background color, no checkerboard pattern. This is one cutout layer, not a complete envelope, illustration, website or mockup. Clean alpha edges and no surrounding cast shadow.",
+      "source": "assets-src/envelope-front-v01.png",
+      "final": "public/assets/envelope-front-v01.webp",
+      "bytes": 201742,
+      "status": "integrated; inspected in desktop, tablet and mobile whole-page journey",
+      "output_dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "name": "envelope-flap-v01",
+      "purpose": "Animated correspondence journey: matching transparent foldable flap",
+      "provider": "Higgsfield",
+      "model": "gpt_image_2_5",
+      "variant": "flare",
+      "quality": "high",
+      "resolution": "2k",
+      "aspect_ratio": "3:2",
+      "count": 1,
+      "background": "transparent",
+      "references": [
+        "90e36d34-cd94-4a85-af66-4e45da3386ef"
+      ],
+      "estimated_credits_exact": 2.75,
+      "actual_charged_credits": null,
+      "job_id": "d20b34b3-e5d1-4981-a3ec-526303f19440",
+      "prompt": "Generate one production cutout layer for the same ivory cotton-paper envelope shown in the reference. ONLY its upper closing flap, detached and flattened: a symmetrical downward-pointing triangular piece of thick warm ivory paper, perfectly straight horizontal top edge, diagonals meeting at a softly rounded lower central tip. Triangle about 2.65 times as wide as tall. Straight-on orthographic view, no perspective or rotation. Preserve the reference's exact tactile cotton fibers, slightly warm ivory #f5f0e4, soft upper-left illumination, delicate paper thickness and realistic edge detail. Center the complete triangle with generous transparent margins, about 88 percent frame width. Entire background is genuinely transparent alpha, including the sides around the triangle. No envelope body, no back panel, no note, no seal, no logo, no writing, no typography, no desk, no cast shadow, no checkerboard or background color. This is a single realistic paper triangle cutout to be folded in code, not a completed envelope, UI or illustration.",
+      "source": "assets-src/envelope-flap-v01.png",
+      "final": "public/assets/envelope-flap-v01.webp",
+      "bytes": 100238,
+      "status": "integrated; inspected in desktop, tablet and mobile whole-page journey",
+      "output_dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "name": "letter-paper-v01",
+      "purpose": "Animated correspondence journey: blank blue note texture, text overlaid in code",
+      "provider": "Higgsfield",
+      "model": "gpt_image_2_5",
+      "variant": "flare",
+      "quality": "high",
+      "resolution": "2k",
+      "aspect_ratio": "3:2",
+      "count": 1,
+      "background": "transparent",
+      "references": [
+        "90e36d34-cd94-4a85-af66-4e45da3386ef",
+        "e2dd34de-c113-4134-b5e5-7365daca2589"
+      ],
+      "estimated_credits_exact": 2.75,
+      "actual_charged_credits": null,
+      "job_id": "5d89c848-bfe9-4067-8c8a-2c677d6f0e0f",
+      "prompt": "Generate one premium physical stationery layer for a scroll-animated private thinking studio. A SINGLE blank rectangular pale periwinkle-blue cotton paper note card, matching the blue card palette in the second reference and the authentic cotton-paper fibers and restrained soft upper-left light of the envelope in the first reference. Perfectly straight-on orthographic front view, no perspective, no rotation, no curl, no folds. Flat card approximately 1.4 times as wide as tall, with very subtle natural paper edge thickness and tactile fibers. All four edges fully visible, centered and occupying about 86 percent frame width. Muted pale blue #dbe3ef, smooth enough for readable dark blue type that will be overlaid in code. Genuinely transparent alpha everywhere outside the card; no cast shadow or surrounding surface. The entire card is completely blank: no writing, no printed lines, no logo, no seal, no graphics, no embossing. No envelope, other objects, hands, devices, website, mockup, UI, checkerboard or colored background. This is one realistic paper cutout layer, not an illustration.",
+      "source": "assets-src/letter-paper-v01.png",
+      "final": "public/assets/letter-paper-v01.webp",
+      "bytes": 147796,
+      "status": "integrated; inspected in desktop, tablet and mobile whole-page journey",
+      "output_dimensions": [
+        1536,
+        1024
+      ]
     }
-  ]
+  ],
+  "estimated_total_credits_exact": 16.5,
+  "actual_total_charged_credits": null
 }

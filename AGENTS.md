@@ -1,10 +1,10 @@
 # Repository Guidelines
 
-VEIL is a local frontend for a private AI studio. Its independent visual concept is personal correspondence: paper, folded notes, and blue ink. Latens supplied the original product category; its visual system is not the design reference for the current direction. The project context lives in the personal project note identified as `Projects/veil`; resolve its vault location through Nicol's personal workflow. Keep plans, decisions, and validation summaries in that note.
+VEIL is a frontend for a private AI studio. Its independent visual concept is personal correspondence: paper, folded notes, and blue ink. Latens supplied the original product category; its visual system is not the design reference for the current direction. The project context lives in the personal project note identified as `Projects/veil`; resolve its vault location through Nicol's personal workflow. Keep plans, decisions, and validation summaries in that note.
 
 ## Structure
 
-The application uses React, TypeScript, and Vite. `src/main.tsx` mounts the application; `src/App.tsx` owns hash navigation and the landing page. `src/components/Terminal.tsx` owns the workspace, `Docs.tsx` owns documentation and pricing, and `Wallet.tsx` owns the visual wallet selector. Rates live in `src/content/pricing.ts`; page motion lives in `src/hooks/`. Shared tokens are in `src/styles.css`. Serve production SVG/WebP media from `public/assets/` at `/assets/…`; keep original generations and metadata in `assets-src/`, references in `references/`, and real captures in `validation/`. Preserve unrelated projects.
+The application uses React, TypeScript, and Vite. `src/App.tsx` owns navigation and landing. `Terminal.tsx` owns the workspace, `Docs.tsx` documentation/pricing, `Wallet.tsx` wallet selection, and `Brand.tsx` vector identity, inside `src/components/`. `EnvelopeArtwork.tsx` composes generated layers; `LetterStory.tsx`, `JourneyAnchor.tsx`, and `src/hooks/useCorrespondenceJourney.ts` own the reversible, whole-page letter journey. Rates live in `src/content/pricing.ts`; tokens in `src/styles.css`. Serve SVG/WebP media from `public/assets/`; keep original generations/metadata in `assets-src/`, references in `references/`, and real captures in `validation/`. Preserve unrelated projects.
 
 ## Commands
 
@@ -12,7 +12,7 @@ Run commands from this project root. `npm install` installs the lockfile depende
 
 ## Conventions and Validation
 
-All interface copy, metadata, errors, and accessibility labels must be English. Preserve warm paper `#f5f3ed`, blue ink `#283f83`, Instrument Serif display type, and Inter body text. Keep functional copy as markup; use purpose-made correspondence imagery and CSS/SVG details. Images require a verified estimate of at most 3 credits each before generation. Inspect desktop/mobile captures and relevant breakpoints. Exercise routes, docs search, pricing input validation, wallet selection, studio controls, keyboard focus, and modal cleanup. Support reduced motion. Latens pricing is a dated reference, not a live integration; verify its source before changing rates.
+All copy, metadata, errors, and accessibility labels must be English. Preserve warm paper `#f5f3ed`, blue ink `#283f83`, Instrument Serif display type, and Inter body text. Keep functional copy as markup; use correspondence imagery and CSS/SVG details. Images require a verified estimate of at most 3 credits each before generation. Inspect desktop/mobile captures, short viewports, and relevant breakpoints. Exercise routes, docs search, pricing validation, wallet selection, studio controls, keyboard focus, modal cleanup, and forward/reverse letter scroll. Preserve the static reduced-motion path and dispose listeners/animation frames on unmount. Latens pricing is a dated reference; verify its source before changing rates.
 
 ## Boundaries
 

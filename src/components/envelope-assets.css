@@ -1,0 +1,66 @@
+.envelope-artwork .mail-front--generated {
+  background: none;
+  overflow: hidden;
+  clip-path: polygon(0 0, 50% 51%, 100% 0, 100% 100%, 0 100%);
+}
+
+.envelope-artwork .mail-front--generated > .envelope-front-texture {
+  position: absolute;
+  left: -10.24%;
+  top: -18.42%;
+  width: 120.47%;
+  height: 132.55%;
+  max-width: none;
+  object-fit: fill;
+  user-select: none;
+  pointer-events: none;
+}
+
+.envelope-artwork .mail-flap {
+  overflow: hidden;
+  background-image: none;
+}
+
+.envelope-artwork .envelope-flap-texture {
+  position: absolute;
+  left: -8.5%;
+  top: -35.25%;
+  width: 117%;
+  height: 127.3%;
+  max-width: none;
+  object-fit: fill;
+  user-select: none;
+  pointer-events: none;
+}
+
+.envelope-artwork .personal-letter {
+  background-image: none;
+}
+
+.envelope-artwork .letter-paper-texture {
+  position: absolute;
+  z-index: 0;
+  left: -11.05%;
+  top: -22.25%;
+  width: 122.1%;
+  height: 145.5%;
+  max-width: none;
+  object-fit: fill;
+  user-select: none;
+  pointer-events: none;
+}
+
+.envelope-artwork .personal-letter > :not(.letter-paper-texture) {
+  position: relative;
+  z-index: 1;
+}
+
+.envelope-artwork .personal-letter > .letter-signature {
+  position: absolute;
+}
+
+.envelope-artwork.without-caption .mail-orbit,
+.envelope-artwork.without-caption .mail-marginalia,
+.envelope-artwork.without-caption .mail-caption {
+  display: none;
+}

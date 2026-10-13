@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#f5f3ed"/><path d="M13 12h38v40H13V12Zm0 0 19 26 19-26M13 52l19-14 19 14" fill="none" stroke="#283f83" stroke-width="2.2"/><path d="M32 38 51 12v40L32 38Z" fill="#283f83" fill-opacity=".13"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <mask id="veil-cut">
+      <rect width="64" height="64" fill="white"/>
+      <path fill="black" d="m27.2 30.8 9.9-8.5-3.5 20.8-6.4-12.3Z"/>
+    </mask>
+  </defs>
+  <g fill="#283f83" mask="url(#veil-cut)">
+    <path d="M5 7h16l13 35-8 15L5 7Z"/>
+    <path d="M43 7h16L38 57H26l8-15L43 7Z"/>
+  </g>
+  <path fill="#283f83" fill-opacity=".56" d="m33.6 43.1 7.5-7.1-3.1 13.5-4.4-6.4Z"/>
+</svg>
